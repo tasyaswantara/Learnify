@@ -8,7 +8,14 @@
   --color-ink-900: #171525;
   --color-ink-700: #3f3b55;
   --color-ink-500: #6f6a82;
+  --color-ink-400: #9b96ad;
   --color-line: #e7e4ef;
+  --color-surface-50: #fbfbfd;
+  --color-surface-100: #f1f4f8;
+  --color-surface-200: #e5eaf0;
+  --color-success-600: #16805d;
+  --color-warning-600: #a15c07;
+  --color-danger-600: #c8324f;
 }
 
 html {
