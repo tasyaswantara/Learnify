@@ -10,11 +10,9 @@ function LandingPage() {
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 py-5 sm:px-8 lg:px-10">
         <header className="flex items-center justify-between">
           <Logo />
-          <nav className="hidden items-center gap-6 text-sm font-semibold text-ink-500 sm:flex">
-            <a className="transition hover:text-brand-700" href="#biodata">
-              Mulai Tes
-            </a>
-          </nav>
+          <span className="hidden text-sm font-semibold text-ink-500 sm:inline">
+            Placement Test
+          </span>
         </header>
 
         <section

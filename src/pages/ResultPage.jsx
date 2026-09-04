@@ -20,7 +20,7 @@ const badges = {
 }
 
 function ResultPage() {
-  const { answers, questions, resetQuiz } = useQuiz()
+  const { answers, isSubmitted, questions, resetQuiz } = useQuiz()
   const userStorage = useLocalStorage(USER_STORAGE_KEY)
   const user = userStorage.getItem()
   const score = calculateScore(questions, answers)
@@ -33,7 +33,7 @@ function ResultPage() {
     user,
   })
 
-  if (!user || Object.keys(answers).length === 0) {
+  if (!user || !isSubmitted || Object.keys(answers).length === 0) {
     return (
       <main className="min-h-screen bg-[#f7f8fb] px-5 py-6 text-ink-900 sm:px-8">
         <div className="mx-auto max-w-4xl">
