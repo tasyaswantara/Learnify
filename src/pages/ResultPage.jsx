@@ -96,10 +96,10 @@ function ResultPage() {
 
           <section className="space-y-6">
             <div className="rounded-lg border border-line bg-white p-6 shadow-sm">
-              <div className="flex items-start gap-4">
+              <div className="block text-center sm:flex sm:items-center sm:justify-center sm:text-start gap-4">
                 <img
                   alt=""
-                  className="h-16 w-16 object-contain"
+                  className="h-34 w-34 object-contain inline-block"
                   src={badges[level.label]}
                 />
                 <div>

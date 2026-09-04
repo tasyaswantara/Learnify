@@ -2,7 +2,7 @@ import { cn } from '../../utils/cn'
 
 function QuestionNavigation({ answers, currentQuestionIndex, goToQuestion, questions }) {
   return (
-    <div className="grid grid-cols-5 gap-2">
+    <div className="grid grid-cols-5 gap-2 sm:grid-cols-5 md:grid-cols-5">
       {questions.map((question, index) => {
         const isCurrent = index === currentQuestionIndex
         const isAnswered = Boolean(answers[question.id])
