@@ -12,10 +12,7 @@ function LandingPage() {
           <Logo />
           <nav className="hidden items-center gap-6 text-sm font-semibold text-ink-500 sm:flex">
             <a className="transition hover:text-brand-700" href="#biodata">
-              Biodata
-            </a>
-            <a className="transition hover:text-brand-700" href="#placement">
-              Placement
+              Mulai Tes
             </a>
           </nav>
         </header>
