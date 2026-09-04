@@ -1,7 +1,11 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from '../common/Button'
 import Input from '../common/Input'
 import { Card, CardContent, CardHeader, CardTitle } from '../common/Card'
 import FormField from './FormField'
+import useLocalStorage from '../../hooks/useLocalStorage'
+import { USER_STORAGE_KEY, validateBiodata } from '../../utils/validation'
 
 const programs = [
   'Frontend Development',
@@ -11,8 +15,42 @@ const programs = [
 ]
 
 function BiodataForm() {
+  const navigate = useNavigate()
+  const userStorage = useLocalStorage(USER_STORAGE_KEY)
+  const [values, setValues] = useState({
+    email: '',
+    name: '',
+    targetProgram: '',
+    whatsapp: '',
+  })
+  const [errors, setErrors] = useState({})
+
+  function handleChange(event) {
+    const { name, value } = event.target
+
+    setValues((currentValues) => ({
+      ...currentValues,
+      [name]: value,
+    }))
+
+    setErrors((currentErrors) => ({
+      ...currentErrors,
+      [name]: '',
+    }))
+  }
+
   function handleSubmit(event) {
     event.preventDefault()
+
+    const result = validateBiodata(values)
+    setErrors(result.errors)
+
+    if (!result.isValid) {
+      return
+    }
+
+    userStorage.setItem(result.values)
+    navigate('/quiz')
   }
 
   return (
@@ -32,26 +70,38 @@ function BiodataForm() {
           >
             <Input
               aria-label="Nama lengkap"
+              error={errors.name}
               id="fullName"
+              name="name"
+              onChange={handleChange}
               placeholder="Masukkan nama lengkap"
+              value={values.name}
             />
           </FormField>
 
           <FormField htmlFor="email" label="Email" required>
             <Input
               aria-label="Email"
+              error={errors.email}
               id="email"
+              name="email"
+              onChange={handleChange}
               placeholder="nama@email.com"
               type="email"
+              value={values.email}
             />
           </FormField>
 
           <FormField htmlFor="whatsapp" label="WhatsApp" required>
             <Input
               aria-label="WhatsApp"
+              error={errors.whatsapp}
               id="whatsapp"
               inputMode="tel"
+              name="whatsapp"
+              onChange={handleChange}
               placeholder="08123456789"
+              value={values.whatsapp}
             />
           </FormField>
 
@@ -63,8 +113,10 @@ function BiodataForm() {
             <select
               aria-label="Domisili atau target program"
               className="h-11 w-full rounded-md border border-line bg-white px-3 text-sm text-ink-900 outline-none transition focus:border-brand-600 focus:ring-2 focus:ring-brand-100"
-              defaultValue=""
               id="targetProgram"
+              name="targetProgram"
+              onChange={handleChange}
+              value={values.targetProgram}
             >
               <option disabled value="">
                 Pilih target program
@@ -75,6 +127,11 @@ function BiodataForm() {
                 </option>
               ))}
             </select>
+            {errors.targetProgram && (
+              <p className="text-sm leading-5 text-danger-600">
+                {errors.targetProgram}
+              </p>
+            )}
           </FormField>
 
           <Button className="mt-2" fullWidth type="submit">
