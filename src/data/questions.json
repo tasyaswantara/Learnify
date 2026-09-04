@@ -1,0 +1,183 @@
+[
+  {
+    "id": 1,
+    "category": "HTML & CSS",
+    "question": "Which semantic HTML element is most appropriate for the main navigation links of a page?",
+    "options": [
+      { "id": "A", "text": "<section>" },
+      { "id": "B", "text": "<nav>" },
+      { "id": "C", "text": "<aside>" },
+      { "id": "D", "text": "<article>" }
+    ],
+    "correctAnswer": "B"
+  },
+  {
+    "id": 2,
+    "category": "HTML & CSS",
+    "question": "Which CSS property is used to control the space inside an element, between its content and border?",
+    "options": [
+      { "id": "A", "text": "margin" },
+      { "id": "B", "text": "gap" },
+      { "id": "C", "text": "padding" },
+      { "id": "D", "text": "outline" }
+    ],
+    "correctAnswer": "C"
+  },
+  {
+    "id": 3,
+    "category": "HTML & CSS",
+    "question": "In Flexbox, which property controls alignment along the main axis?",
+    "options": [
+      { "id": "A", "text": "align-items" },
+      { "id": "B", "text": "justify-content" },
+      { "id": "C", "text": "place-items" },
+      { "id": "D", "text": "object-fit" }
+    ],
+    "correctAnswer": "B"
+  },
+  {
+    "id": 4,
+    "category": "JavaScript",
+    "question": "What is the output of typeof null in JavaScript?",
+    "options": [
+      { "id": "A", "text": "\"null\"" },
+      { "id": "B", "text": "\"undefined\"" },
+      { "id": "C", "text": "\"object\"" },
+      { "id": "D", "text": "\"boolean\"" }
+    ],
+    "correctAnswer": "C"
+  },
+  {
+    "id": 5,
+    "category": "JavaScript",
+    "question": "Which array method returns a new array without mutating the original array?",
+    "code": "const numbers = [1, 2, 3]\nconst result = numbers.map((number) => number * 2)",
+    "options": [
+      { "id": "A", "text": "push" },
+      { "id": "B", "text": "splice" },
+      { "id": "C", "text": "map" },
+      { "id": "D", "text": "sort" }
+    ],
+    "correctAnswer": "C"
+  },
+  {
+    "id": 6,
+    "category": "JavaScript",
+    "question": "Which keyword creates a block-scoped variable that can be reassigned?",
+    "options": [
+      { "id": "A", "text": "var" },
+      { "id": "B", "text": "let" },
+      { "id": "C", "text": "const" },
+      { "id": "D", "text": "static" }
+    ],
+    "correctAnswer": "B"
+  },
+  {
+    "id": 7,
+    "category": "JavaScript",
+    "question": "What does a Promise represent in JavaScript?",
+    "options": [
+      { "id": "A", "text": "A synchronous loop result" },
+      { "id": "B", "text": "A value that may be available now, later, or never" },
+      { "id": "C", "text": "A CSS animation timeline" },
+      { "id": "D", "text": "A browser-only storage API" }
+    ],
+    "correctAnswer": "B"
+  },
+  {
+    "id": 8,
+    "category": "React",
+    "question": "Which React hook is commonly used to store local component state?",
+    "options": [
+      { "id": "A", "text": "useMemo" },
+      { "id": "B", "text": "useEffect" },
+      { "id": "C", "text": "useState" },
+      { "id": "D", "text": "useRef" }
+    ],
+    "correctAnswer": "C"
+  },
+  {
+    "id": 9,
+    "category": "React",
+    "question": "Why should list items rendered with map usually include a key prop?",
+    "options": [
+      { "id": "A", "text": "To help React identify which items changed" },
+      { "id": "B", "text": "To make the text bold automatically" },
+      { "id": "C", "text": "To prevent CSS from loading" },
+      { "id": "D", "text": "To convert arrays into objects" }
+    ],
+    "correctAnswer": "A"
+  },
+  {
+    "id": 10,
+    "category": "React",
+    "question": "Which hook is appropriate for running side effects after rendering?",
+    "options": [
+      { "id": "A", "text": "useState" },
+      { "id": "B", "text": "useEffect" },
+      { "id": "C", "text": "useId" },
+      { "id": "D", "text": "useContext" }
+    ],
+    "correctAnswer": "B"
+  },
+  {
+    "id": 11,
+    "category": "React",
+    "question": "What is the main purpose of React Context?",
+    "options": [
+      { "id": "A", "text": "Sharing data across components without prop drilling" },
+      { "id": "B", "text": "Replacing HTML with CSS" },
+      { "id": "C", "text": "Compiling JavaScript into images" },
+      { "id": "D", "text": "Running database queries directly" }
+    ],
+    "correctAnswer": "A"
+  },
+  {
+    "id": 12,
+    "category": "Web Fundamentals",
+    "question": "Which localStorage method saves a string value by key?",
+    "options": [
+      { "id": "A", "text": "localStorage.save()" },
+      { "id": "B", "text": "localStorage.setItem()" },
+      { "id": "C", "text": "localStorage.push()" },
+      { "id": "D", "text": "localStorage.commit()" }
+    ],
+    "correctAnswer": "B"
+  },
+  {
+    "id": 13,
+    "category": "Web Fundamentals",
+    "question": "Which HTTP status code usually means a request succeeded?",
+    "options": [
+      { "id": "A", "text": "200" },
+      { "id": "B", "text": "301" },
+      { "id": "C", "text": "404" },
+      { "id": "D", "text": "500" }
+    ],
+    "correctAnswer": "A"
+  },
+  {
+    "id": 14,
+    "category": "Web Fundamentals",
+    "question": "What is the main goal of responsive design?",
+    "options": [
+      { "id": "A", "text": "Make layouts adapt to different screen sizes" },
+      { "id": "B", "text": "Disable mobile browsers" },
+      { "id": "C", "text": "Use only fixed pixel widths" },
+      { "id": "D", "text": "Remove all media assets" }
+    ],
+    "correctAnswer": "A"
+  },
+  {
+    "id": 15,
+    "category": "Web Fundamentals",
+    "question": "Which browser API is commonly used to fetch data from an endpoint?",
+    "options": [
+      { "id": "A", "text": "fetch" },
+      { "id": "B", "text": "querySelector" },
+      { "id": "C", "text": "setTimeout" },
+      { "id": "D", "text": "parseInt" }
+    ],
+    "correctAnswer": "A"
+  }
+]
