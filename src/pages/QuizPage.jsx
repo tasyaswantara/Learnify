@@ -1,12 +1,21 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../components/common/Logo'
 import QuestionCard from '../components/quiz/QuestionCard'
 import QuizSidebar from '../components/quiz/QuizSidebar'
+import SubmitConfirmation from '../components/quiz/SubmitConfirmation'
 import useQuiz from '../hooks/useQuiz'
 
 function QuizPage() {
   const quiz = useQuiz()
+  const navigate = useNavigate()
+  const [showSubmitConfirmation, setShowSubmitConfirmation] = useState(false)
   const selectedAnswer = quiz.answers[quiz.currentQuestion.id]
+
+  function handleConfirmSubmit() {
+    quiz.submitQuiz()
+    navigate('/result')
+  }
 
   return (
     <main className="min-h-screen bg-[#f7f8fb] px-5 py-6 text-ink-900 sm:px-8">
@@ -33,6 +42,7 @@ function QuizPage() {
             isFirstQuestion={quiz.isFirstQuestion}
             isLastQuestion={quiz.isLastQuestion}
             nextQuestion={quiz.nextQuestion}
+            onSubmitClick={() => setShowSubmitConfirmation(true)}
             previousQuestion={quiz.previousQuestion}
             question={quiz.currentQuestion}
             selectAnswer={quiz.selectAnswer}
@@ -41,6 +51,13 @@ function QuizPage() {
           />
         </section>
       </div>
+      {showSubmitConfirmation && (
+        <SubmitConfirmation
+          onCancel={() => setShowSubmitConfirmation(false)}
+          onConfirm={handleConfirmSubmit}
+          unansweredCount={quiz.unansweredCount}
+        />
+      )}
     </main>
   )
 }

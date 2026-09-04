@@ -1,19 +1,39 @@
-import { createContext, useCallback, useMemo, useState } from 'react'
+import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 import questions from '../data/questions.json'
 
 const QuizContext = createContext(null)
 
 const initialQuestionIndex = 0
+const QUIZ_PROGRESS_KEY = 'learnify:quiz-progress'
+
+function getSavedProgress() {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  try {
+    const savedProgress = window.localStorage.getItem(QUIZ_PROGRESS_KEY)
+    return savedProgress ? JSON.parse(savedProgress) : null
+  } catch {
+    window.localStorage.removeItem(QUIZ_PROGRESS_KEY)
+    return null
+  }
+}
 
 function QuizProvider({ children }) {
-  const [answers, setAnswers] = useState({})
-  const [currentQuestionIndex, setCurrentQuestionIndex] =
-    useState(initialQuestionIndex)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const savedProgress = getSavedProgress()
+  const [answers, setAnswers] = useState(savedProgress?.answers || {})
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
+    savedProgress?.currentQuestionIndex || initialQuestionIndex,
+  )
+  const [isSubmitted, setIsSubmitted] = useState(
+    savedProgress?.isSubmitted || false,
+  )
 
   const totalQuestions = questions.length
   const currentQuestion = questions[currentQuestionIndex]
   const answeredCount = Object.keys(answers).length
+  const unansweredCount = totalQuestions - answeredCount
   const progressPercentage = totalQuestions
     ? Math.round((answeredCount / totalQuestions) * 100)
     : 0
@@ -41,6 +61,7 @@ function QuizProvider({ children }) {
     setAnswers({})
     setCurrentQuestionIndex(initialQuestionIndex)
     setIsSubmitted(false)
+    window.localStorage.removeItem(QUIZ_PROGRESS_KEY)
   }, [])
 
   const selectAnswer = useCallback((questionId, optionId) => {
@@ -53,6 +74,17 @@ function QuizProvider({ children }) {
   const submitQuiz = useCallback(() => {
     setIsSubmitted(true)
   }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      QUIZ_PROGRESS_KEY,
+      JSON.stringify({
+        answers,
+        currentQuestionIndex,
+        isSubmitted,
+      }),
+    )
+  }, [answers, currentQuestionIndex, isSubmitted])
 
   const value = useMemo(
     () => ({
@@ -72,6 +104,7 @@ function QuizProvider({ children }) {
       selectAnswer,
       submitQuiz,
       totalQuestions,
+      unansweredCount,
     }),
     [
       answeredCount,
@@ -87,6 +120,7 @@ function QuizProvider({ children }) {
       selectAnswer,
       submitQuiz,
       totalQuestions,
+      unansweredCount,
     ],
   )
 

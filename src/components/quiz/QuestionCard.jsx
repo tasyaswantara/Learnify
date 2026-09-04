@@ -6,6 +6,7 @@ function QuestionCard({
   isFirstQuestion,
   isLastQuestion,
   nextQuestion,
+  onSubmitClick,
   previousQuestion,
   question,
   selectedAnswer,
@@ -43,9 +44,11 @@ function QuestionCard({
         >
           Previous
         </Button>
-        <Button disabled={isLastQuestion} onClick={nextQuestion}>
-          Next
-        </Button>
+        {isLastQuestion ? (
+          <Button onClick={onSubmitClick}>Submit Test</Button>
+        ) : (
+          <Button onClick={nextQuestion}>Next</Button>
+        )}
       </div>
     </section>
   )
