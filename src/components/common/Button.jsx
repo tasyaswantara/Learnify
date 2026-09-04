@@ -18,6 +18,7 @@ const sizes = {
 }
 
 function Button({
+  as: Component = 'button',
   children,
   className,
   disabled = false,
@@ -33,7 +34,7 @@ function Button({
   const isDisabled = disabled || isLoading
 
   return (
-    <button
+    <Component
       className={cn(
         'inline-flex shrink-0 items-center justify-center gap-2 rounded-md font-semibold tracking-normal transition',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
@@ -44,7 +45,7 @@ function Button({
         className,
       )}
       disabled={isDisabled}
-      type={type}
+      type={Component === 'button' ? type : undefined}
       {...props}
     >
       {isLoading ? (
@@ -54,7 +55,7 @@ function Button({
       )}
       <span>{children}</span>
       {!isLoading && rightIcon}
-    </button>
+    </Component>
   )
 }
 

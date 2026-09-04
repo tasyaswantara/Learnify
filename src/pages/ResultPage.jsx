@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Button from '../components/common/Button'
-import Logo from '../components/common/Logo'
+import Header from '../components/common/Header'
 import recommendations from '../data/recommendations'
 import useLocalStorage from '../hooks/useLocalStorage'
 import useQuiz from '../hooks/useQuiz'
@@ -37,15 +37,15 @@ function ResultPage() {
     return (
       <main className="min-h-screen bg-[#f7f8fb] px-5 py-6 text-ink-900 sm:px-8">
         <div className="mx-auto max-w-4xl">
-          <Logo />
+          <Header />
           <section className="mt-10 rounded-lg border border-line bg-white p-6 shadow-sm">
             <h1 className="text-2xl font-semibold">Hasil belum tersedia</h1>
             <p className="mt-3 text-sm leading-6 text-ink-500">
               Lengkapi biodata dan submit quiz terlebih dahulu.
             </p>
-            <Link className="mt-5 inline-flex" to="/">
-              <Button>Mulai dari biodata</Button>
-            </Link>
+            <Button as={Link} className="mt-5" to="/">
+              Mulai dari biodata
+            </Button>
           </section>
         </div>
       </main>
@@ -55,12 +55,13 @@ function ResultPage() {
   return (
     <main className="min-h-screen bg-[#f7f8fb] px-5 py-6 text-ink-900 sm:px-8">
       <div className="mx-auto max-w-6xl">
-        <header className="flex items-center justify-between">
-          <Logo />
-          <Link className="text-sm font-semibold text-brand-700" to="/">
-            Home
-          </Link>
-        </header>
+        <Header
+          rightContent={
+            <Link className="text-sm font-semibold text-brand-700 hover:underline" to="/">
+              Home
+            </Link>
+          }
+        />
 
         <section className="mt-8 grid gap-6 lg:grid-cols-[360px_1fr]">
           <section className="rounded-lg border border-line bg-white p-6 text-center shadow-sm">
@@ -113,9 +114,9 @@ function ResultPage() {
                   </p>
                 </div>
               </div>
-              <a className="mt-6 inline-flex w-full" href={whatsappUrl}>
-                <Button fullWidth>Konsultasi via WhatsApp</Button>
-              </a>
+              <Button as="a" className="mt-6" fullWidth href={whatsappUrl}>
+                Konsultasi via WhatsApp
+              </Button>
             </div>
 
             <div className="rounded-lg border border-line bg-white p-6 shadow-sm">

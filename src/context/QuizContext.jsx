@@ -21,13 +21,13 @@ function getSavedProgress() {
 }
 
 function QuizProvider({ children }) {
-  const savedProgress = getSavedProgress()
-  const [answers, setAnswers] = useState(savedProgress?.answers || {})
+  const [savedProgress] = useState(() => getSavedProgress())
+  const [answers, setAnswers] = useState(() => savedProgress?.answers || {})
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
-    savedProgress?.currentQuestionIndex || initialQuestionIndex,
+    () => savedProgress?.currentQuestionIndex || initialQuestionIndex,
   )
   const [isSubmitted, setIsSubmitted] = useState(
-    savedProgress?.isSubmitted || false,
+    () => savedProgress?.isSubmitted || false,
   )
 
   const totalQuestions = questions.length
