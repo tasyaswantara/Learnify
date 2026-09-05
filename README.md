@@ -1,7 +1,7 @@
 # Learnify Placement Test Engine
 
-GitHub Repository: https://github.com/tasyaswantara/Learnify.git
 Live Deployment: https://learnify-two-orcin.vercel.app/
+GitHub Repository: https://github.com/tasyaswantara/Learnify.git
 
 Mini project frontend untuk Multi-Step Placement Test Engine. Aplikasi ini
 akan memandu pengguna dari biodata, pengerjaan kuis 15 soal, sampai halaman
