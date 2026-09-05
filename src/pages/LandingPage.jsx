@@ -40,7 +40,7 @@ function LandingPage() {
               ))}
             </div>
 
-            <div className="relative mt-8 max-w-lg overflow-hidden rounded-lg bg-brand-50 px-5 pt-5">
+            <div className="relative mt-8 max-w-lg overflow-hidden rounded-lg px-5 pt-5">
               <img
                 alt="Learnify student using laptop"
                 className="relative mx-auto h-56 w-full max-w-sm object-contain sm:h-64"
