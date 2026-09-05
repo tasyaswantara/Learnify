@@ -1,4 +1,4 @@
-# Learnify Placement Test Engine
+# Learnify
 
 Live Deployment: https://learnify-two-orcin.vercel.app/
 GitHub Repository: https://github.com/tasyaswantara/Learnify.git
